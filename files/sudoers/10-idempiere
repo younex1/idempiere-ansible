@@ -1,0 +1,3 @@
+%devops ALL=(ALL) NOPASSWD:/bin/systemctl * idempiere, /bin/systemctl * postgresql*
+%devops ALL=(idempiere) NOPASSWD:ALL
+idempiere ALL=(ALL) NOPASSWD:/bin/systemctl * idempiere

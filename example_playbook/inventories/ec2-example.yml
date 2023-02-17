@@ -1,0 +1,14 @@
+---
+all:
+  children:
+    ec2:
+      hosts:
+        m_debian_x86:
+          ansible_host: X.X.X.X
+          ansible_user: admin
+        m_amazon_linux_arm:
+          ansible_host: X.X.X.X
+          ansible_user: ec2-user
+        m_suse_x86:
+          ansible_host: X.X.X.X
+          ansible_user: ec2-user

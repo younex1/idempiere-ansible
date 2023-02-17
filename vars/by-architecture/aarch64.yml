@@ -1,0 +1,6 @@
+---
+# Installation Variables
+idempiere_download_url: 'https://kenos-p2.s3.amazonaws.com/idempiereServer10.gtk.linux.aarch64.tgz'
+idempiere_download_checksum: 'sha1:75ff11e2eb49c49085ae2963b25cff32257728c7'
+idempiere_download_format: 'tgz'
+idempiere_home: '/opt/idempiere-server'

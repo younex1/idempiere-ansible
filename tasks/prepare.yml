@@ -1,0 +1,53 @@
+---
+#
+#   Create the user and group idempiere
+#
+- name: Create group idempiere
+  ansible.builtin.group:
+    name: idempiere
+    state: present
+
+- name: Create user idempiere
+  ansible.builtin.user:
+    name: idempiere
+    group: idempiere
+    shell: /bin/bash
+    createhome: yes
+    state: present
+
+#
+#   Allow idempiere user to start/stop idempiere service
+#     and postgresql with sudo with no password
+#
+- name: Copy sudoers permissions
+  ansible.builtin.copy:
+    src: 'sudoers/10-idempiere'
+    dest: '/etc/sudoers.d/'
+    mode: u=r,g=r,o=
+
+#
+#   Update repository on Debian systems
+#
+- name: Update apt repo and cache on all Debian/Ubuntu boxes
+  ansible.builtin.apt:
+    update_cache: yes
+    force_apt_get: yes
+  changed_when: false
+  when: ansible_os_family == 'Debian'
+
+#
+#   Install tools like vim, wget, etc
+#
+- name: Install required tools
+  ansible.builtin.package:
+    name: '{{ required_packages }}'
+    state: present
+    
+#
+#   Install tools like vim, wget, etc
+#
+- name: Install OS specific required tools
+  ansible.builtin.package:
+    name: '{{ required_packages_os_specific }}'
+    state: present
+  when: required_packages_os_specific is defined

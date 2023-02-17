@@ -1,0 +1,34 @@
+---
+# Installation Variables
+idempiere_home: '/opt/idempiere-server'
+# Java
+java_home: /opt/jdk11
+java_version: zulu@1.11.0-10
+# PostgresSQL
+postgres_version: 15
+postgres_install: true
+# Application
+app_port: 8080
+app_server: 0.0.0.0
+app_ssl: 8443
+app_url: localhost
+# Databaase
+db_host: localhost
+db_name: idempiere
+db_pass: 'MyWeak_Pa55w0rd'
+db_port: 5432
+db_system: 'MyWeak_Pa55w0rd'
+db_type: 2
+db_user: adempiere
+# Keystore
+ks_country: BR
+ks_locale: Sao Paulo
+ks_organization_unit: Systems
+ks_organization: iDempiere Community
+ks_pass: 'MyWeak_Pa55w0rd'
+ks_state: SP
+# Mail
+mail_admin: superuser @ gardenworld.com
+mail_login: none
+mail_pass: none
+mail_server: localhost

@@ -1,0 +1,10 @@
+---
+idempiere_service: idempiere_Debian.sh
+required_packages_os_specific:
+  - acl
+  - cron
+  - gnupg
+  - nano
+  - ntpdate
+  - tzdata
+  - unzip

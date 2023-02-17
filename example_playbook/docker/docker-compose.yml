@@ -1,0 +1,20 @@
+---
+version: "2.1"
+services:
+  ubuntu_x86:
+    build: ubuntu
+    platform: linux/amd64
+    privileged: true
+    container_name: ubuntu_x86
+    ports:
+      - "0.0.0.0:8001:8443"
+      - "0.0.0.0:2201:22"
+    restart: unless-stopped
+  ubuntu_arm:
+    build: ubuntu
+    privileged: true
+    container_name: ubuntu_arm
+    ports:
+      - "0.0.0.0:8002:8443"
+      - "0.0.0.0:2202:22"
+    restart: unless-stopped

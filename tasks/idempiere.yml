@@ -1,0 +1,176 @@
+---
+#
+#   Download the iDempiere Server form the internet
+#
+- name: Download iDempiere server
+  ansible.builtin.get_url:
+    url: '{{ idempiere_download_url }}'
+    dest: '{{ idempiere_home }}.{{ idempiere_download_format }}'
+    owner: idempiere
+    group: idempiere
+    mode: u=rw,g=r,o=r
+    checksum: '{{ idempiere_download_checksum }}'
+  register: idempiere_download
+
+#
+#   Check if iDempiere folder exists
+#
+- name: Check iDempiere installation
+  ansible.builtin.stat:
+    path: '{{ idempiere_home }}'
+  register: idempiere_install
+
+#
+#   Extract the TGZ/ZIP. This file was created in jenkins
+#       so after that you should put files in correct places
+#
+- name: Extract iDempiere
+  ansible.builtin.unarchive:
+    src: '{{ idempiere_home }}.{{ idempiere_download_format }}'
+    dest: /opt/
+    owner: idempiere
+    group: idempiere
+    remote_src: yes
+  when: idempiere_download.changed or not idempiere_install.stat.exists
+
+#
+#   Copy idempiere-server to iDempiere home
+#
+- name: Put files in place
+  ansible.builtin.command: 'mv /opt/idempiere.gtk.linux.{{ ansible_architecture }}/idempiere-server {{ idempiere_home }}'
+  when: idempiere_download.changed or not idempiere_install.stat.exists
+
+#
+#   Delete installation files
+#
+- name: Delete installation files
+  ansible.builtin.file:
+    path: /opt/idempiere.gtk.linux.{{ ansible_architecture }}
+    state: absent
+
+#
+#   Configure the Environment
+#
+- name: Configure non-interactive environment
+  ansible.builtin.blockinfile:
+    dest: /home/idempiere/.bashrc
+    create: yes
+    block: |
+      # Command aliasses
+      alias ll='ls -alF'
+
+      # iDempiere Variables
+      export IDEMPIERE_HOME={{ idempiere_home }}
+
+      # Go to iDempiere Folder after login
+      cd {{ idempiere_home }}
+
+#
+#   Debian and RedHat has differente names for interactive bash environment
+#       so this task try to find those files, so it can be updated later
+#
+- name: Find profile or bash_profile
+  ansible.builtin.find:
+    paths: /home/idempiere
+    patterns: '.profile,.bash_profile'
+    hidden: yes
+  register: profile_results
+
+#
+#   Configure the shell, so when someone connect, the shell is directed to iDempiere home
+#
+- name: Configure interactive environment
+  ansible.builtin.blockinfile:
+    dest: '{{ item.path }}'
+    block: |
+      # iDempiere Variables
+      export IDEMPIERE_HOME={{ idempiere_home }}
+
+      # set PATH so it includes java's private bin if it exists
+      if [ -d "$JAVA_HOME/bin" ] ; then
+          PATH="$JAVA_HOME/bin:$PATH"
+      fi
+  with_items: "{{ profile_results.files }}"
+
+#
+#   Create additional folders to store attachments and reports
+#
+- name: Create folders to store attachments and reports
+  ansible.builtin.file:
+    path: '{{ idempiere_home }}{{ item }}'
+    state: directory
+    owner: idempiere
+    group: idempiere
+    mode: u=rwx,g=r,o=
+  with_items:
+    - /data/storage
+    - /data/reports
+
+#
+#   Creates iDempiere service
+#
+- name: Creates iDempiere service (Ubuntu)
+  ansible.builtin.copy:
+    src: '{{ idempiere_home }}/utils/unix/{{ idempiere_service }}'
+    dest: /etc/init.d/idempiere
+    remote_src: yes
+    mode: u=rwx,g=rx,o=rx
+
+#
+#   Check if iDempiere was already installed
+#
+- name: Check iDempiere installation
+  ansible.builtin.stat:
+    path: '{{ idempiere_home }}/idempiereEnv.properties'
+  register: idempiere_installed
+
+#
+#   Copy my setup file
+#
+- name: Copy setup file
+  ansible.builtin.template:
+    src: 'my-console-setup.sh'
+    dest: '{{ idempiere_home }}/my-console-setup.sh'
+    owner: idempiere
+    group: idempiere
+    mode: u=rwx,g=,o=
+  when: not idempiere_installed.stat.exists
+
+#
+#   Setup
+#
+- name: Setup iDempiere
+  ansible.builtin.shell:
+    cmd: ./my-console-setup.sh > /tmp/idempiere-setup.log 2>&1
+    chdir: '{{ idempiere_home }}'
+  when: not idempiere_installed.stat.exists
+  become: true
+  become_user: idempiere
+  args:
+    executable: /bin/bash
+  environment:
+    PATH: "/bin:{{ java_home }}/bin"
+  notify: Start iDempiere
+
+#
+#   Clean up setup files
+#
+- name: Clean up setup files
+  ansible.builtin.file:
+    path: '{{ idempiere_home }}/my-console-setup.sh'
+    state: absent
+    
+#
+#   Synchronize DB
+#
+- name: Synchronize DB
+  ansible.builtin.shell:
+    cmd: ./RUN_SyncDB.sh
+    chdir: '{{ idempiere_home }}/utils/'
+  when: idempiere_installed.stat.exists
+  become: true
+  become_user: idempiere
+  args:
+    executable: /bin/bash
+  register: sync_result
+  changed_when: "'Database is already in sync' not in sync_result.stdout"

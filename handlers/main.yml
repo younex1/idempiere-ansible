@@ -1,0 +1,27 @@
+---
+#
+#   Restart service
+#
+- name: Restart PostgreSQL service
+  service:
+    name: 'postgresql'
+    state: restarted
+
+#
+#   Reload settings on the go
+#
+- name: Reload PostgreSQL service
+  service:
+    name: 'postgresql'
+    state: reloaded
+
+#
+#   Start iDempiere service
+#
+- name: Start iDempiere
+  ansible.builtin.systemd:
+    state: started
+    enabled: no
+    name: idempiere
+    daemon_reload: yes
+  ignore_errors: true

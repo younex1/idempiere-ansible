@@ -1,0 +1,31 @@
+---
+#
+#   Set specific variables
+#
+- name: Set variables
+  ansible.builtin.include_vars: "common.yml"
+
+#
+#   Set OS specific variables
+#
+- name: Set OS specific variables
+  ansible.builtin.include_vars: "{{ item }}"
+  with_first_found:
+    - "by-os-family/{{ ansible_distribution }}-{{ ansible_distribution_major_version}}.yml"
+    - "by-os-family/{{ ansible_distribution }}.yml"
+    - "by-os-family/{{ ansible_os_family }}.yml"
+
+#
+#   Set architecture specific variables
+#
+- name: Set OS specific variables
+  ansible.builtin.include_vars: "{{ item }}"
+  with_first_found:
+    - "by-architecture/{{ ansible_architecture }}.yml"
+
+#   Idempiere role
+- include_tasks: prepare.yml
+- include_tasks: java.yml
+- include_tasks: postgres.yml
+  when: postgres_install
+- include_tasks: idempiere.yml

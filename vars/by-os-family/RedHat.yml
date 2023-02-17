@@ -1,0 +1,7 @@
+---
+idempiere_service: idempiere_RedHat.sh
+required_packages_os_specific:
+  - nano
+  - ntpdate
+  - tzdata
+  - unzip

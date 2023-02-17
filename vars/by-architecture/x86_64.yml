@@ -1,0 +1,6 @@
+---
+# Installation Variables
+idempiere_download_url: 'https://sourceforge.net/projects/idempiere/files/v10/server/idempiereServer10.gtk.linux.x86_64.zip/download'
+idempiere_download_checksum: 'md5:3c9369bbbe9e220c64d2e8454222372b'
+idempiere_download_format: 'zip'
+idempiere_home: '/opt/idempiere-server'

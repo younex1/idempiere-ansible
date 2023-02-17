@@ -1,0 +1,4 @@
+---
+idempiere_service: idempiere_Suse.sh
+required_packages_os_specific:
+  - unzip

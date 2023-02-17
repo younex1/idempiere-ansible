@@ -1,0 +1,13 @@
+---
+all:
+  children:
+    docker:
+      hosts:
+        ubuntu_docker_x86:
+          ansible_host: localhost
+          ansible_port: 2201
+          ansible_user: root
+        ubuntu_docker_arm:
+          ansible_host: localhost
+          ansible_port: 2202
+          ansible_user: root
