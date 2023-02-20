@@ -1,9 +1,7 @@
 ---
 - hosts: all
-  become: yes
-  become_user: root
   gather_facts: yes
   roles:
-    - idempiere
+    - ralexsander.idempiere_ansible
   vars:
     postgres_version: 14
