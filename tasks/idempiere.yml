@@ -9,7 +9,7 @@
     owner: idempiere
     group: idempiere
     mode: u=rw,g=r,o=r
-    checksum: '{{ idempiere_download_checksum }}'
+#    checksum: '{{ idempiere_download_checksum }}'
   register: idempiere_download
 
 #
