@@ -2,10 +2,10 @@
 # Installation Variables
 idempiere_home: '/opt/idempiere-server'
 # Java
-java_home: /opt/jdk11
-#java_home: /opt/jdk17
-java_version: zulu@1.11.0-10
-#java_version: zulu@17.48.15
+#java_home: /opt/jdk11
+java_home: /opt/jdk17
+#java_version: zulu@1.11.0-10
+java_version: zulu@17.48.15
 # PostgresSQL
 postgres_version: 15
 postgres_install: true
