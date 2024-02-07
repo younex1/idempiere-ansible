@@ -3,6 +3,9 @@
 {{ java_home }}
 {{ idempiere_home }}
 {{ ks_pass }}
+
+
+
 {{ app_url }}
 {{ ks_organization_unit }}
 {{ ks_organization }}
