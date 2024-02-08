@@ -1,15 +1,13 @@
 #/bin/bash
 ./console-setup.sh << !
 {{ java_home }}
+-Xms64M -Xmx512M
 {{ idempiere_home }}
 {{ ks_pass }}
-
-
-
-{{ app_url }}
-{{ ks_organization_unit }}
-{{ ks_organization }}
-{{ ks_locale }}
+root
+iDempiereUser
+root
+MyTown
 {{ ks_state }}
 {{ ks_country }}
 {{ app_server }}
