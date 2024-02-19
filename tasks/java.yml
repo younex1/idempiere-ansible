@@ -15,11 +15,11 @@
 #
 #   Install Java via Jabba
 #
-- name: Install Java via Jabba
-  ansible.builtin.shell:
-    cmd: |
-      curl -sL https://github.com/shyiko/jabba/raw/master/install.sh | JABBA_COMMAND="install {{ java_version }} -o {{ java_home }}" bash
-  when: installed_java_version.changed
+# - name: Install Java via Jabba
+#  ansible.builtin.shell:
+#    cmd: |
+#      curl -sL https://github.com/shyiko/jabba/raw/master/install.sh | JABBA_COMMAND="install {{ java_version }} -o {{ java_home }}" bash
+#  when: installed_java_version.changed
 
 #
 #   Set JAVA_HOME
