@@ -6,3 +6,6 @@ required_packages:
   - wget
   - git
   - fontconfig
+  - libpq-dev
+  - zlib1g-dev
+  - libgmp-dev 
