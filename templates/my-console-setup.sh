@@ -28,5 +28,6 @@ N
 Y
 !
 cd utils
+#Copy to this locateion new ready DB if needed (overwrite): /opt/idempiere-server/data/seed/Adempiere_pg.dmp
 ./RUN_ImportIdempiere.sh << !
 !
