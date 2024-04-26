@@ -15,3 +15,52 @@ UPDATE AD_Table SET AccessLevel='6',Updated=TO_TIMESTAMP('2024-04-09 12:15:16','
 UPDATE AD_Table SET AccessLevel='6',Updated=TO_TIMESTAMP('2024-04-09 12:34:56','YYYY-MM-DD HH24:MI:SS'),UpdatedBy=100 WHERE AD_Table_ID=376;
 UPDATE AD_Table SET AccessLevel='6',Updated=TO_TIMESTAMP('2024-04-09 12:35:07','YYYY-MM-DD HH24:MI:SS'),UpdatedBy=100 WHERE AD_Table_ID=284;
 UPDATE AD_Table SET AccessLevel='6',Updated=TO_TIMESTAMP('2024-04-09 12:35:21','YYYY-MM-DD HH24:MI:SS'),UpdatedBy=100 WHERE AD_Table_ID=895;
+
+CREATE MATERIALIZED VIEW xy_mat_ad_preference AS
+SELECT pref.ad_preference_id,
+    pref.ad_client_id,
+    pref.ad_org_id,
+    pref.ad_window_id,
+    wind.name AS ad_window_name,
+    pref.attribute,
+        CASE
+            WHEN ((pref.attribute)::text = 'C_BPartner_ID'::text) THEN bp.value
+            WHEN ((pref.attribute)::text = 'Bill_BPartner_ID'::text) THEN bp.value
+            WHEN (((pref.attribute)::text = 'C_DocTypeTarget_ID'::text) OR ((pref.attribute)::text = 'C_DocType_ID'::text)) THEN doct.name
+            ELSE pref.value
+        END AS value,
+        CASE
+            WHEN ((pref.attribute)::text = 'C_BPartner_ID'::text) THEN bp.name
+            WHEN ((pref.attribute)::text = 'Bill_BPartner_ID'::text) THEN bp.name
+            WHEN (((pref.attribute)::text = 'C_DocTypeTarget_ID'::text) OR ((pref.attribute)::text = 'C_DocType_ID'::text)) THEN doct.name
+            ELSE pref.value
+        END AS identifier,
+    pref.ad_user_id,
+    adu.name AS ad_user_name,
+    adu.value AS ad_user_value
+   FROM ((((ad_preference pref
+     LEFT JOIN ad_window wind ON ((pref.ad_window_id = wind.ad_window_id)))
+     LEFT JOIN ad_user adu ON ((adu.ad_user_id = pref.ad_user_id)))
+     LEFT JOIN c_bpartner bp ON ((((bp.c_bpartner_id)::text = (pref.value)::text) AND ((pref.attribute)::text = ANY (ARRAY[('C_BPartner_ID'::character varying)::text, ('Bill_BPartner_ID'::character varying)::text])))))
+     LEFT JOIN c_doctype doct ON ((((doct.c_doctype_id)::text = (pref.value)::text) AND ((pref.attribute)::text = ANY (ARRAY[('C_DocTypeTarget_ID'::character varying)::text, ('C_DocType_ID'::character varying)::text])))))
+  WHERE ((pref.ad_window_id IS NOT NULL) AND (pref.value IS NOT NULL) AND (pref.isactive = 'Y'::bpchar))
+  ORDER BY pref.ad_preference_id DESC;
+
+
+-- Step 1: Create the trigger function
+CREATE OR REPLACE FUNCTION update_materialized_view_ad_preference()
+RETURNS TRIGGER AS
+$$
+BEGIN
+    REFRESH MATERIALIZED VIEW xy_mat_ad_preference;
+    RETURN NULL;
+END;
+$$
+LANGUAGE plpgsql;
+
+-- Create the trigger to only fire on INSERT or UPDATE
+CREATE TRIGGER trigger_ad_preference
+AFTER INSERT OR UPDATE
+ON ad_preference
+FOR EACH ROW
+EXECUTE FUNCTION update_materialized_view_ad_preference();
