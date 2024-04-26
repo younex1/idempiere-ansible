@@ -16,7 +16,54 @@ UPDATE AD_Table SET AccessLevel='6',Updated=TO_TIMESTAMP('2024-04-09 12:34:56','
 UPDATE AD_Table SET AccessLevel='6',Updated=TO_TIMESTAMP('2024-04-09 12:35:07','YYYY-MM-DD HH24:MI:SS'),UpdatedBy=100 WHERE AD_Table_ID=284;
 UPDATE AD_Table SET AccessLevel='6',Updated=TO_TIMESTAMP('2024-04-09 12:35:21','YYYY-MM-DD HH24:MI:SS'),UpdatedBy=100 WHERE AD_Table_ID=895;
 
--- Strapi
-INSERT INTO AD_Element (AD_Element_ID,AD_Client_ID,AD_Org_ID,IsActive,Created,CreatedBy,Updated,UpdatedBy,ColumnName,Name,PrintName,EntityType,AD_Element_UU) VALUES (nextidfunc(188,'N'),0,0,'Y',TO_TIMESTAMP('2024-04-25 06:55:03','YYYY-MM-DD HH24:MI:SS'),100,TO_TIMESTAMP('2024-04-25 06:55:03','YYYY-MM-DD HH24:MI:SS'),100,'Strapi_Product_ID','Strapi_Product_ID','Strapi_Product_ID','U','0fa2cbc5-507a-45c8-a653-1e06dd7a049a');
-INSERT INTO AD_Column (AD_Column_ID,Version,Name,AD_Table_ID,ColumnName,FieldLength,IsKey,IsParent,IsMandatory,IsTranslated,IsIdentifier,SeqNo,IsEncrypted,AD_Reference_ID,AD_Client_ID,AD_Org_ID,IsActive,Created,CreatedBy,Updated,UpdatedBy,AD_Element_ID,IsUpdateable,IsSelectionColumn,EntityType,IsSyncDatabase,IsAlwaysUpdateable,IsAutocomplete,IsAllowLogging,AD_Column_UU,IsAllowCopy,SeqNoSelection,IsToolbarButton,IsSecure,IsHtml,IsPartitionKey) VALUES (nextidfunc(3,'N'),0,'Strapi_Product_ID',208,'Strapi_Product_ID',22,'N','N','N','N','N',0,'N',11,0,0,'Y',TO_TIMESTAMP('2024-04-25 06:55:20','YYYY-MM-DD HH24:MI:SS'),100,TO_TIMESTAMP('2024-04-25 06:55:20','YYYY-MM-DD HH24:MI:SS'),100,toRecordId('AD_Element','0fa2cbc5-507a-45c8-a653-1e06dd7a049a'),'Y','N','U','N','Y','N','Y','ccabb1d0-fd93-406a-b65b-2556c22e0e68','Y',0,'N','N','N','N');
-INSERT INTO t_alter_column values('m_product','Strapi_Product_ID','NUMERIC(10)',null,'NULL');
+CREATE MATERIALIZED VIEW xy_mat_ad_preference AS
+SELECT pref.ad_preference_id,
+    pref.ad_client_id,
+    pref.ad_org_id,
+    pref.ad_window_id,
+    wind.name AS ad_window_name,
+    pref.attribute,
+        CASE
+            WHEN ((pref.attribute)::text = 'C_BPartner_ID'::text) THEN bp.value
+            WHEN ((pref.attribute)::text = 'Bill_BPartner_ID'::text) THEN bp.value
+            WHEN (((pref.attribute)::text = 'C_DocTypeTarget_ID'::text) OR ((pref.attribute)::text = 'C_DocType_ID'::text)) THEN doct.name
+            ELSE pref.value
+        END AS value,
+        CASE
+            WHEN ((pref.attribute)::text = 'C_BPartner_ID'::text) THEN bp.name
+            WHEN ((pref.attribute)::text = 'Bill_BPartner_ID'::text) THEN bp.name
+            WHEN (((pref.attribute)::text = 'C_DocTypeTarget_ID'::text) OR ((pref.attribute)::text = 'C_DocType_ID'::text)) THEN doct.name
+						WHEN pref.attribute IN ('DeliveryRule', 'DeliveryViaRule','FreightCostRule','InvoiceRule','PaymentRule','PriorityRule') THEN adrefl.name
+            ELSE pref.value
+        END AS identifier,
+    pref.ad_user_id,
+    adu.name AS ad_user_name,
+    adu.value AS ad_user_value
+   FROM ((((ad_preference pref
+     LEFT JOIN ad_window wind ON ((pref.ad_window_id = wind.ad_window_id)))
+     LEFT JOIN ad_user adu ON ((adu.ad_user_id = pref.ad_user_id)))
+     LEFT JOIN c_bpartner bp ON ((((bp.c_bpartner_id)::text = (pref.value)::text) AND ((pref.attribute)::text = ANY (ARRAY[('C_BPartner_ID'::character varying)::text, ('Bill_BPartner_ID'::character varying)::text])))))
+     LEFT JOIN c_doctype doct ON ((((doct.c_doctype_id)::text = (pref.value)::text) AND ((pref.attribute)::text = ANY (ARRAY[('C_DocTypeTarget_ID'::character varying)::text, ('C_DocType_ID'::character varying)::text])))))
+     LEFT JOIN ad_reference adr ON adr.name LIKE '%'||pref.attribute AND pref."attribute" IN ('DeliveryRule', 'DeliveryViaRule','FreightCostRule','InvoiceRule','PaymentRule','PriorityRule')
+		 LEFT JOIN ad_ref_list adrefl ON adrefl.ad_reference_id = adr.ad_reference_id
+	WHERE ((pref.ad_window_id IS NOT NULL) AND (pref.value IS NOT NULL) AND (pref.isactive = 'Y'::bpchar))
+  ORDER BY pref.ad_preference_id DESC;
+
+
+-- Step 1: Create the trigger function
+CREATE OR REPLACE FUNCTION update_materialized_view_ad_preference()
+RETURNS TRIGGER AS
+$$
+BEGIN
+    REFRESH MATERIALIZED VIEW xy_mat_ad_preference;
+    RETURN NULL;
+END;
+$$
+LANGUAGE plpgsql;
+
+-- Create the trigger to only fire on INSERT or UPDATE
+CREATE TRIGGER trigger_ad_preference
+AFTER INSERT OR UPDATE
+ON ad_preference
+FOR EACH ROW
+EXECUTE FUNCTION update_materialized_view_ad_preference();
