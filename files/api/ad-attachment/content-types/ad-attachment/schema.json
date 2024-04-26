@@ -1,0 +1,29 @@
+{
+  "kind": "collectionType",
+  "collectionName": "ad_attachments",
+  "info": {
+    "singularName": "ad-attachment",
+    "pluralName": "ad-attachments",
+    "displayName": "AD_Attachment"
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "AD_Attachment_ID": {
+      "type": "integer",
+      "required": true
+    },
+    "attachment": {
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ],
+      "type": "media",
+      "multiple": true
+    }
+  }
+}

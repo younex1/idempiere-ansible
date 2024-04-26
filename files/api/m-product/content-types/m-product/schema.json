@@ -1,0 +1,32 @@
+{
+  "kind": "collectionType",
+  "collectionName": "m_products",
+  "info": {
+    "singularName": "m-product",
+    "pluralName": "m-products",
+    "displayName": "M_Product",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "M_Product_ID": {
+      "type": "integer",
+      "required": true,
+      "unique": true
+    },
+    "value": {
+      "type": "string"
+    },
+    "image": {
+      "allowedTypes": [
+        "images",
+        "videos"
+      ],
+      "type": "media",
+      "multiple": true
+    }
+  }
+}
