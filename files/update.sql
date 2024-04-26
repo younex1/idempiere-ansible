@@ -33,6 +33,7 @@ SELECT pref.ad_preference_id,
             WHEN ((pref.attribute)::text = 'C_BPartner_ID'::text) THEN bp.name
             WHEN ((pref.attribute)::text = 'Bill_BPartner_ID'::text) THEN bp.name
             WHEN (((pref.attribute)::text = 'C_DocTypeTarget_ID'::text) OR ((pref.attribute)::text = 'C_DocType_ID'::text)) THEN doct.name
+						WHEN pref.attribute IN ('DeliveryRule', 'DeliveryViaRule','FreightCostRule','InvoiceRule','PaymentRule','PriorityRule') THEN adrefl.name
             ELSE pref.value
         END AS identifier,
     pref.ad_user_id,
@@ -43,7 +44,9 @@ SELECT pref.ad_preference_id,
      LEFT JOIN ad_user adu ON ((adu.ad_user_id = pref.ad_user_id)))
      LEFT JOIN c_bpartner bp ON ((((bp.c_bpartner_id)::text = (pref.value)::text) AND ((pref.attribute)::text = ANY (ARRAY[('C_BPartner_ID'::character varying)::text, ('Bill_BPartner_ID'::character varying)::text])))))
      LEFT JOIN c_doctype doct ON ((((doct.c_doctype_id)::text = (pref.value)::text) AND ((pref.attribute)::text = ANY (ARRAY[('C_DocTypeTarget_ID'::character varying)::text, ('C_DocType_ID'::character varying)::text])))))
-  WHERE ((pref.ad_window_id IS NOT NULL) AND (pref.value IS NOT NULL) AND (pref.isactive = 'Y'::bpchar))
+     LEFT JOIN ad_reference adr ON adr.name LIKE '%'||pref.attribute AND pref."attribute" IN ('DeliveryRule', 'DeliveryViaRule','FreightCostRule','InvoiceRule','PaymentRule','PriorityRule')
+		 LEFT JOIN ad_ref_list adrefl ON adrefl.ad_reference_id = adr.ad_reference_id
+	WHERE ((pref.ad_window_id IS NOT NULL) AND (pref.value IS NOT NULL) AND (pref.isactive = 'Y'::bpchar))
   ORDER BY pref.ad_preference_id DESC;
 
 
