@@ -28,5 +28,7 @@ N
 Y
 !
 cd utils
+#Copy to this locateion new ready DB if needed (overwrite): /opt/idempiere-server/data/seed/Adempiere_pg.dmp
+#/usr/bin/scp root@192.168.12.65:/root/idempiere-demo-public /opt/idempiere-server/data/seed/Adempiere_pg.dmp
 ./RUN_ImportIdempiere.sh << !
 !
