@@ -33,12 +33,22 @@
     remote_src: yes
   when: idempiere_download.changed or not idempiere_install.stat.exists
 
+
+
 #
 #   Copy idempiere-server to iDempiere home
 #
 - name: Put files in place
   ansible.builtin.command: 'mv /opt/idempiere.gtk.linux.{{ ansible_architecture }}/idempiere-server {{ idempiere_home }}'
   when: idempiere_download.changed or not idempiere_install.stat.exists
+
+#
+#   Copy germany idempiere database
+#
+- name: Put files in place
+  ansible.builtin.command: 'cp /root/idempiere-demo-public/Adempiere_pg.dmp /opt/idempiere-server/data/seed/Adempiere_pg.dmp'
+  when: idempiere_download.changed or not idempiere_install.stat.exists
+
 
 #
 #   Delete installation files
