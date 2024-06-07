@@ -4,26 +4,33 @@
   "info": {
     "singularName": "ad-attachment",
     "pluralName": "ad-attachments",
-    "displayName": "AD_Attachment"
+    "displayName": "AD_Attachment",
+    "description": ""
   },
   "options": {
     "draftAndPublish": false
   },
   "pluginOptions": {},
   "attributes": {
-    "AD_Attachment_ID": {
-      "type": "integer",
-      "required": true
-    },
     "attachment": {
+      "type": "media",
+      "multiple": true,
+      "required": false,
       "allowedTypes": [
         "images",
         "files",
         "videos",
         "audios"
-      ],
-      "type": "media",
-      "multiple": true
+      ]
+    },
+    "AD_Table_ID": {
+      "type": "biginteger"
+    },
+    "Record_ID": {
+      "type": "integer"
+    },
+    "Record_UU": {
+      "type": "uid"
     }
   }
 }

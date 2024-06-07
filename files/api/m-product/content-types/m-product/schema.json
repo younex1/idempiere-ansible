@@ -21,12 +21,19 @@
       "type": "string"
     },
     "image": {
+      "type": "media",
+      "multiple": true,
+      "required": false,
       "allowedTypes": [
         "images",
         "videos"
-      ],
-      "type": "media",
-      "multiple": true
+      ]
+    },
+    "name": {
+      "type": "string"
+    },
+    "Main_Image": {
+      "type": "integer"
     }
   }
 }
