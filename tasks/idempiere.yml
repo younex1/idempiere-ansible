@@ -45,9 +45,9 @@
 #
 #   Copy germany idempiere database
 #
-- name: Put files in place
-  ansible.builtin.command: 'cp /root/idempiere-demo-public/Adempiere_pg.dmp /opt/idempiere-server/data/seed/Adempiere_pg.dmp'
-  when: idempiere_download.changed or not idempiere_install.stat.exists
+#- name: Put files in place
+#  ansible.builtin.command: 'cp /root/idempiere-demo-public/Adempiere_pg.dmp /opt/idempiere-server/data/seed/Adempiere_pg.dmp'
+#  when: idempiere_download.changed or not idempiere_install.stat.exists
 
 
 #
