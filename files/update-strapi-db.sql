@@ -1,0 +1,31 @@
+INSERT INTO "public"."strapi_api_tokens" ("id", "name", "description", "type", "access_key", "last_used_at", "expires_at", "lifespan", "created_at", "updated_at", "created_by_id", "updated_by_id") VALUES (1, 'develop', '', 'custom', '41231f05cb52189f6ce14be773d461ba9c2720a1ddf6fdd0232e75268d4ca40b9cd52122e766973f6230518b8fff02490d37b0ce0914c9092b50a5e7e0d49ec2', NULL, NULL, NULL, '2024-04-26 20:16:04.578', '2024-04-26 20:24:36.093', NULL, NULL);
+
+INSERT INTO "public"."strapi_api_token_permissions_token_links" ("id", "api_token_permission_id", "api_token_id", "api_token_permission_order") VALUES (1, 3, 1, '1');
+INSERT INTO "public"."strapi_api_token_permissions_token_links" ("id", "api_token_permission_id", "api_token_id", "api_token_permission_order") VALUES (2, 1, 1, '1');
+INSERT INTO "public"."strapi_api_token_permissions_token_links" ("id", "api_token_permission_id", "api_token_id", "api_token_permission_order") VALUES (3, 2, 1, '1');
+INSERT INTO "public"."strapi_api_token_permissions_token_links" ("id", "api_token_permission_id", "api_token_id", "api_token_permission_order") VALUES (4, 4, 1, '1');
+INSERT INTO "public"."strapi_api_token_permissions_token_links" ("id", "api_token_permission_id", "api_token_id", "api_token_permission_order") VALUES (5, 5, 1, '1');
+INSERT INTO "public"."strapi_api_token_permissions_token_links" ("id", "api_token_permission_id", "api_token_id", "api_token_permission_order") VALUES (6, 6, 1, '1');
+INSERT INTO "public"."strapi_api_token_permissions_token_links" ("id", "api_token_permission_id", "api_token_id", "api_token_permission_order") VALUES (7, 7, 1, '1');
+INSERT INTO "public"."strapi_api_token_permissions_token_links" ("id", "api_token_permission_id", "api_token_id", "api_token_permission_order") VALUES (8, 8, 1, '1');
+INSERT INTO "public"."strapi_api_token_permissions_token_links" ("id", "api_token_permission_id", "api_token_id", "api_token_permission_order") VALUES (9, 11, 1, '1');
+INSERT INTO "public"."strapi_api_token_permissions_token_links" ("id", "api_token_permission_id", "api_token_id", "api_token_permission_order") VALUES (10, 12, 1, '1');
+INSERT INTO "public"."strapi_api_token_permissions_token_links" ("id", "api_token_permission_id", "api_token_id", "api_token_permission_order") VALUES (11, 13, 1, '2');
+INSERT INTO "public"."strapi_api_token_permissions_token_links" ("id", "api_token_permission_id", "api_token_id", "api_token_permission_order") VALUES (12, 14, 1, '2');
+INSERT INTO "public"."strapi_api_token_permissions_token_links" ("id", "api_token_permission_id", "api_token_id", "api_token_permission_order") VALUES (13, 9, 1, '2');
+INSERT INTO "public"."strapi_api_token_permissions_token_links" ("id", "api_token_permission_id", "api_token_id", "api_token_permission_order") VALUES (14, 10, 1, '2');
+
+INSERT INTO "public"."strapi_api_token_permissions" ("id", "action", "created_at", "updated_at", "created_by_id", "updated_by_id") VALUES (1, 'api::ad-attachment.ad-attachment.findOne', '2024-04-26 20:16:04.588', '2024-04-26 20:16:04.588', NULL, NULL);
+INSERT INTO "public"."strapi_api_token_permissions" ("id", "action", "created_at", "updated_at", "created_by_id", "updated_by_id") VALUES (2, 'api::ad-attachment.ad-attachment.create', '2024-04-26 20:16:04.588', '2024-04-26 20:16:04.588', NULL, NULL);
+INSERT INTO "public"."strapi_api_token_permissions" ("id", "action", "created_at", "updated_at", "created_by_id", "updated_by_id") VALUES (3, 'api::ad-attachment.ad-attachment.find', '2024-04-26 20:16:04.588', '2024-04-26 20:16:04.588', NULL, NULL);
+INSERT INTO "public"."strapi_api_token_permissions" ("id", "action", "created_at", "updated_at", "created_by_id", "updated_by_id") VALUES (4, 'api::ad-attachment.ad-attachment.update', '2024-04-26 20:16:04.588', '2024-04-26 20:16:04.588', NULL, NULL);
+INSERT INTO "public"."strapi_api_token_permissions" ("id", "action", "created_at", "updated_at", "created_by_id", "updated_by_id") VALUES (5, 'api::ad-attachment.ad-attachment.delete', '2024-04-26 20:16:04.588', '2024-04-26 20:16:04.588', NULL, NULL);
+INSERT INTO "public"."strapi_api_token_permissions" ("id", "action", "created_at", "updated_at", "created_by_id", "updated_by_id") VALUES (6, 'api::m-product.m-product.find', '2024-04-26 20:16:04.588', '2024-04-26 20:16:04.588', NULL, NULL);
+INSERT INTO "public"."strapi_api_token_permissions" ("id", "action", "created_at", "updated_at", "created_by_id", "updated_by_id") VALUES (7, 'api::m-product.m-product.findOne', '2024-04-26 20:16:04.588', '2024-04-26 20:16:04.588', NULL, NULL);
+INSERT INTO "public"."strapi_api_token_permissions" ("id", "action", "created_at", "updated_at", "created_by_id", "updated_by_id") VALUES (8, 'api::m-product.m-product.create', '2024-04-26 20:16:04.588', '2024-04-26 20:16:04.588', NULL, NULL);
+INSERT INTO "public"."strapi_api_token_permissions" ("id", "action", "created_at", "updated_at", "created_by_id", "updated_by_id") VALUES (9, 'api::m-product.m-product.update', '2024-04-26 20:16:04.588', '2024-04-26 20:16:04.588', NULL, NULL);
+INSERT INTO "public"."strapi_api_token_permissions" ("id", "action", "created_at", "updated_at", "created_by_id", "updated_by_id") VALUES (10, 'api::m-product.m-product.delete', '2024-04-26 20:16:04.588', '2024-04-26 20:16:04.588', NULL, NULL);
+INSERT INTO "public"."strapi_api_token_permissions" ("id", "action", "created_at", "updated_at", "created_by_id", "updated_by_id") VALUES (11, 'plugin::upload.content-api.find', '2024-04-26 20:16:04.588', '2024-04-26 20:16:04.588', NULL, NULL);
+INSERT INTO "public"."strapi_api_token_permissions" ("id", "action", "created_at", "updated_at", "created_by_id", "updated_by_id") VALUES (12, 'plugin::upload.content-api.findOne', '2024-04-26 20:16:04.588', '2024-04-26 20:16:04.588', NULL, NULL);
+INSERT INTO "public"."strapi_api_token_permissions" ("id", "action", "created_at", "updated_at", "created_by_id", "updated_by_id") VALUES (13, 'plugin::upload.content-api.destroy', '2024-04-26 20:16:04.588', '2024-04-26 20:16:04.588', NULL, NULL);
+INSERT INTO "public"."strapi_api_token_permissions" ("id", "action", "created_at", "updated_at", "created_by_id", "updated_by_id") VALUES (14, 'plugin::upload.content-api.upload', '2024-04-26 20:16:04.588', '2024-04-26 20:16:04.588', NULL, NULL);
