@@ -173,14 +173,14 @@
 #
 #   Synchronize DB
 #
-- name: Synchronize DB
-  ansible.builtin.shell:
-    cmd: ./RUN_SyncDB.sh
-    chdir: '{{ idempiere_home }}/utils/'
-  when: idempiere_installed.stat.exists
-  become: true
-  become_user: idempiere
-  args:
-    executable: /bin/bash
-  register: sync_result
-  changed_when: "'Database is already in sync' not in sync_result.stdout"
+#- name: Synchronize DB
+#  ansible.builtin.shell:
+#    cmd: ./RUN_SyncDB.sh
+#    chdir: '{{ idempiere_home }}/utils/'
+#  when: idempiere_installed.stat.exists
+#  become: true
+#  become_user: idempiere
+#  args:
+#    executable: /bin/bash
+#  register: sync_result
+#  changed_when: "'Database is already in sync' not in sync_result.stdout"
