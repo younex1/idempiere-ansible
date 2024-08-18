@@ -1,7 +1,7 @@
 #/bin/bash
 ./console-setup.sh << !
 {{ java_home }}
--Xms129M -Xmx1024M
+-Xms128M -Xmx1024M
 {{ idempiere_home }}
 {{ ks_pass }}
 root
