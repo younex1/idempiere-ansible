@@ -26,6 +26,29 @@ ALTER TABLE M_InOut ADD COLUMN Sendcloud_Parcel_ID NUMERIC(10) DEFAULT NULL;
 INSERT INTO AD_Field (AD_Field_ID,Name,AD_Tab_ID,AD_Column_ID,IsDisplayed,DisplayLength,SeqNo,SortNo,IsSameLine,IsHeading,IsFieldOnly,IsEncrypted,AD_Client_ID,AD_Org_ID,IsActive,Created,CreatedBy,Updated,UpdatedBy,IsReadOnly,IsCentrallyMaintained,EntityType,AD_Field_UU,IsDisplayedGrid,SeqNoGrid,XPosition,ColumnSpan,NumLines,IsQuickEntry,IsDefaultFocus,IsAdvancedField,IsQuickForm) VALUES (nextidfunc(4,'N'),'Sendcloud_Parcel_ID',257,toRecordId('AD_Column','93b73acb-933e-4fbb-9046-177f079aecc2'),'Y',0,580,0,'N','N','N','N',0,0,'Y',TO_TIMESTAMP('2024-08-20 09:44:07','YYYY-MM-DD HH24:MI:SS'),100,TO_TIMESTAMP('2024-08-20 09:44:07','YYYY-MM-DD HH24:MI:SS'),100,'N','Y','U','c616e62c-5aa6-4661-9998-a049c618aba8','Y',570,1,1,1,'N','N','N','N');
 
 
+-- Add IsCommissioned to M_Inout + Shipment-Window
+INSERT INTO AD_Element (AD_Element_ID,AD_Client_ID,AD_Org_ID,IsActive,Created,CreatedBy,Updated,UpdatedBy,ColumnName,Name,PrintName,EntityType,AD_Element_UU) VALUES (nextidfunc(188,'N'),0,0,'Y',TO_TIMESTAMP('2024-08-25 09:43:10','YYYY-MM-DD HH24:MI:SS'),100,TO_TIMESTAMP('2024-08-25 09:43:10','YYYY-MM-DD HH24:MI:SS'),100,'IsCommissioned','IsCommissioned','IsCommissioned','U','4d99fedb-b73b-44cd-b223-0ead185f783b');
+
+INSERT INTO AD_Column (AD_Column_ID,Version,Name,AD_Table_ID,ColumnName,DefaultValue,FieldLength,IsKey,IsParent,IsMandatory,IsTranslated,IsIdentifier,SeqNo,IsEncrypted,AD_Reference_ID,AD_Client_ID,AD_Org_ID,IsActive,Created,CreatedBy,Updated,UpdatedBy,AD_Element_ID,IsUpdateable,IsSelectionColumn,EntityType,IsSyncDatabase,IsAlwaysUpdateable,IsAutocomplete,IsAllowLogging,AD_Column_UU,IsAllowCopy,SeqNoSelection,IsToolbarButton,IsSecure,IsHtml,IsPartitionKey) VALUES (nextidfunc(3,'N'),0,'IsCommissioned',319,'IsCommissioned','N',1,'N','N','Y','N','N',0,'N',20,0,0,'Y',TO_TIMESTAMP('2024-08-25 09:43:29','YYYY-MM-DD HH24:MI:SS'),100,TO_TIMESTAMP('2024-08-25 09:43:29','YYYY-MM-DD HH24:MI:SS'),100,toRecordId('AD_Element','4d99fedb-b73b-44cd-b223-0ead185f783b'),'Y','N','U','N','N','N','Y','e3e5c391-1dca-4965-bde4-58fdb76ad7e0','Y',0,'N','N','N','N');
+
+UPDATE AD_Column SET IsMandatory='Y', IsAlwaysUpdateable='Y',Updated=TO_TIMESTAMP('2024-08-25 09:43:39','YYYY-MM-DD HH24:MI:SS'),UpdatedBy=100 WHERE AD_Column_UU='e3e5c391-1dca-4965-bde4-58fdb76ad7e0';
+
+UPDATE AD_Column SET IsMandatory='Y',Updated=TO_TIMESTAMP('2024-08-25 09:43:42','YYYY-MM-DD HH24:MI:SS'),UpdatedBy=100 WHERE AD_Column_UU='e3e5c391-1dca-4965-bde4-58fdb76ad7e0';
+
+ALTER TABLE M_InOut ADD COLUMN IsCommissioned CHAR(1) DEFAULT 'N' CHECK (IsCommissioned IN ('Y','N')) NOT NULL;
+
+INSERT INTO AD_Field (AD_Field_ID,Name,AD_Tab_ID,AD_Column_ID,IsDisplayed,DisplayLength,SeqNo,SortNo,IsSameLine,IsHeading,IsFieldOnly,IsEncrypted,AD_Client_ID,AD_Org_ID,IsActive,Created,CreatedBy,Updated,UpdatedBy,IsReadOnly,IsCentrallyMaintained,EntityType,AD_Field_UU,IsDisplayedGrid,SeqNoGrid,XPosition,ColumnSpan,NumLines,IsQuickEntry,IsDefaultFocus,IsAdvancedField,IsQuickForm) VALUES (nextidfunc(4,'N'),'IsCommissioned',257,toRecordId('AD_Column','e3e5c391-1dca-4965-bde4-58fdb76ad7e0'),'Y',0,590,0,'N','N','N','N',0,0,'Y',TO_TIMESTAMP('2024-08-25 09:44:12','YYYY-MM-DD HH24:MI:SS'),100,TO_TIMESTAMP('2024-08-25 09:44:12','YYYY-MM-DD HH24:MI:SS'),100,'N','Y','U','472ad26e-fabe-490f-ac9b-7bc0cda528b4','Y',580,1,1,1,'N','N','N','N');
+
+INSERT INTO AD_Element (AD_Element_ID,AD_Client_ID,AD_Org_ID,IsActive,Created,CreatedBy,Updated,UpdatedBy,ColumnName,Name,PrintName,EntityType,AD_Element_UU) VALUES (nextidfunc(188,'N'),0,0,'Y',TO_TIMESTAMP('2024-08-20 09:40:46','YYYY-MM-DD HH24:MI:SS'),100,TO_TIMESTAMP('2024-08-20 09:40:46','YYYY-MM-DD HH24:MI:SS'),100,'Sendcloud_Parcel_ID','Sendcloud_Parcel_ID','Sendcloud_Parcel_ID','U','7727d059-f4ab-4271-a794-868055212ff6');
+
+INSERT INTO AD_Column (AD_Column_ID,Version,Name,AD_Table_ID,ColumnName,FieldLength,IsKey,IsParent,IsMandatory,IsTranslated,IsIdentifier,SeqNo,IsEncrypted,AD_Reference_ID,AD_Client_ID,AD_Org_ID,IsActive,Created,CreatedBy,Updated,UpdatedBy,AD_Element_ID,IsUpdateable,IsSelectionColumn,EntityType,IsSyncDatabase,IsAlwaysUpdateable,IsAutocomplete,IsAllowLogging,AD_Column_UU,IsAllowCopy,SeqNoSelection,IsToolbarButton,IsSecure,IsHtml,IsPartitionKey) VALUES (nextidfunc(3,'N'),0,'Sendcloud_Parcel_ID',319,'Sendcloud_Parcel_ID',20,'N','N','N','N','N',0,'N',13,0,0,'Y',TO_TIMESTAMP('2024-08-20 09:41:42','YYYY-MM-DD HH24:MI:SS'),100,TO_TIMESTAMP('2024-08-20 09:41:42','YYYY-MM-DD HH24:MI:SS'),100,toRecordId('AD_Element','7727d059-f4ab-4271-a794-868055212ff6'),'Y','N','U','N','Y','N','Y','93b73acb-933e-4fbb-9046-177f079aecc2','Y',0,'N','N','N','N');
+
+ALTER TABLE M_InOut ADD COLUMN Sendcloud_Parcel_ID NUMERIC(10) DEFAULT NULL;
+
+INSERT INTO AD_Field (AD_Field_ID,Name,AD_Tab_ID,AD_Column_ID,IsDisplayed,DisplayLength,SeqNo,SortNo,IsSameLine,IsHeading,IsFieldOnly,IsEncrypted,AD_Client_ID,AD_Org_ID,IsActive,Created,CreatedBy,Updated,UpdatedBy,IsReadOnly,IsCentrallyMaintained,EntityType,AD_Field_UU,IsDisplayedGrid,SeqNoGrid,XPosition,ColumnSpan,NumLines,IsQuickEntry,IsDefaultFocus,IsAdvancedField,IsQuickForm) VALUES (nextidfunc(4,'N'),'Sendcloud_Parcel_ID',257,toRecordId('AD_Column','93b73acb-933e-4fbb-9046-177f079aecc2'),'Y',0,580,0,'N','N','N','N',0,0,'Y',TO_TIMESTAMP('2024-08-20 09:44:07','YYYY-MM-DD HH24:MI:SS'),100,TO_TIMESTAMP('2024-08-20 09:44:07','YYYY-MM-DD HH24:MI:SS'),100,'N','Y','U','c616e62c-5aa6-4661-9998-a049c618aba8','Y',570,1,1,1,'N','N','N','N');
+
+
+
 CREATE MATERIALIZED VIEW xy_mat_ad_preference AS
 SELECT pref.ad_preference_id,
     pref.ad_client_id,
