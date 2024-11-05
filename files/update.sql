@@ -170,3 +170,9 @@ ADD CONSTRAINT unique_email_orgid UNIQUE (email, ad_org_id);
 ALTER TABLE c_order
 ADD CONSTRAINT unique_externalorderid_orgid UNIQUE (externalorderid, ad_org_id);
 
+--EXTEND size of name field on partner location
+UPDATE AD_Column SET FieldLength=120, SeqNoSelection=10,Updated=TO_TIMESTAMP('2024-11-05 17:05:35','YYYY-MM-DD HH24:MI:SS'),UpdatedBy=100 WHERE AD_Column_ID=2960;
+
+-- ADD name2 field to buiness-partner location
+INSERT INTO AD_Column (AD_Column_ID,Version,Name,Description,AD_Table_ID,ColumnName,FieldLength,IsKey,IsParent,IsMandatory,IsTranslated,IsIdentifier,SeqNo,IsEncrypted,AD_Reference_ID,AD_Client_ID,AD_Org_ID,IsActive,Created,CreatedBy,Updated,UpdatedBy,AD_Element_ID,IsUpdateable,IsSelectionColumn,EntityType,IsSyncDatabase,IsAlwaysUpdateable,IsAutocomplete,IsAllowLogging,AD_Column_UU,IsAllowCopy,SeqNoSelection,IsToolbarButton,IsSecure,IsHtml,IsPartitionKey) VALUES (nextidfunc(3,'N'),0,'Name 2','Additional Name',293,'Name2',160,'N','N','N','N','N',0,'N',10,0,0,'Y',TO_TIMESTAMP('2024-11-05 17:20:02','YYYY-MM-DD HH24:MI:SS'),100,TO_TIMESTAMP('2024-11-05 17:20:02','YYYY-MM-DD HH24:MI:SS'),100,1111,'Y','Y','U','N','Y','N','Y','43d7b88a-fffe-4c8f-86b8-5273241a8950','Y',20,'N','N','N','N');
+ALTER TABLE C_BPartner_Location ADD COLUMN Name2 VARCHAR(160) DEFAULT NULL;
