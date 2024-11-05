@@ -162,3 +162,11 @@ INSERT INTO AD_Column (AD_Column_ID,Version,Name,Description,Help,AD_Table_ID,Co
 ALTER TABLE C_BPartner ADD COLUMN EMail VARCHAR(255) DEFAULT NULL;
 INSERT INTO AD_Field (AD_Field_ID,Name,Description,Help,AD_Tab_ID,AD_Column_ID,IsDisplayed,DisplayLength,SeqNo,IsSameLine,IsHeading,IsFieldOnly,IsEncrypted,AD_Client_ID,AD_Org_ID,IsActive,Created,CreatedBy,Updated,UpdatedBy,IsReadOnly,IsCentrallyMaintained,EntityType,AD_Field_UU,IsDisplayedGrid,SeqNoGrid,XPosition,ColumnSpan,NumLines,IsQuickEntry,IsDefaultFocus,IsAdvancedField,IsQuickForm) VALUES (nextidfunc(4,'N'),'EMail Address','Electronic Mail Address','The Email Address is the Electronic Mail ID for this User and should be fully qualified (e.g. joe.smith@company.com). The Email Address is used to access the self service application functionality from the web.',220,toRecordId('AD_Column','55a00fda-b7f3-4e9d-b77f-21c080b98326'),'Y',60,630,'N','N','N','N',0,0,'Y',TO_TIMESTAMP('2024-11-05 08:47:07','YYYY-MM-DD HH24:MI:SS'),100,TO_TIMESTAMP('2024-11-05 08:47:07','YYYY-MM-DD HH24:MI:SS'),100,'N','Y','U','25e14ea0-ab93-4ee7-a90e-6e9345528d7f','Y',80,1,5,1,'Y','N','N','N');
 UPDATE AD_Field SET IsDisplayed='Y', SeqNo=630,Updated=TO_TIMESTAMP('2024-11-05 08:51:27','YYYY-MM-DD HH24:MI:SS'),UpdatedBy=100 WHERE AD_Field_ID=2135;
+
+--SET Unique-Constraints for c_bpartner and c_order in relation with ad_org_id to avoid duplicates
+ALTER TABLE c_bpartner
+ADD CONSTRAINT unique_email_orgid UNIQUE (email, ad_org_id);
+
+ALTER TABLE c_order
+ADD CONSTRAINT unique_externalorderid_orgid UNIQUE (externalorderid, ad_org_id);
+
