@@ -255,3 +255,7 @@ ALTER TABLE C_OrderSource ADD COLUMN syncShipmentFromIdempiere CHAR(1) DEFAULT '
 ALTER TABLE C_OrderSource ADD COLUMN marketplace_key VARCHAR(500) DEFAULT NULL;
 ALTER TABLE C_OrderSource ADD COLUMN marketplace_secret VARCHAR(500) DEFAULT NULL;
 ALTER TABLE C_OrderSource ADD COLUMN marketplace_token VARCHAR(500) DEFAULT NULL;
+
+-- Set Marketplace Ref List on OrderSource Table
+UPDATE AD_Column SET FieldLength=8, AD_Reference_Value_ID=toRecordId('AD_Reference','7d7ff01f-2c0b-4029-a2d4-d1bb090e19f7'),Updated=TO_TIMESTAMP('2024-12-27 21:22:35','YYYY-MM-DD HH24:MI:SS'),UpdatedBy=100 WHERE AD_Column_UU='8586cd02-c014-41da-ae60-859bb46f1cea';
+INSERT INTO t_alter_column values('c_ordersource','Marketplace','VARCHAR(8)',null,'NULL');
