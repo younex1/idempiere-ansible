@@ -257,6 +257,10 @@ ALTER TABLE C_OrderSource ADD COLUMN marketplace_secret VARCHAR(500) DEFAULT NUL
 ALTER TABLE C_OrderSource ADD COLUMN marketplace_token VARCHAR(500) DEFAULT NULL;
 
 -- Set Marketplace Ref List on OrderSource Table
---UPDATE AD_Column SET FieldLength=8, AD_Reference_Value_ID=toRecordId('AD_Reference','7d7ff01f-2c0b-4029-a2d4-d1bb090e19f7'),Updated=TO_TIMESTAMP('2024-12-27 21:22:35','YYYY-MM-DD HH24:MI:SS'),UpdatedBy=100 WHERE AD_Column_UU='8586cd02-c014-41da-ae60-859bb46f1cea';
---UPDATE AD_Column SET FieldLength=8, AD_Reference_Value_ID=toRecordId('AD_Reference','7d7ff01f-2c0b-4029-a2d4-d1bb090e19f7'),Updated=TO_TIMESTAMP('2024-12-27 22:10:02','YYYY-MM-DD HH24:MI:SS'),UpdatedBy=100 WHERE AD_Column_UU='8586cd02-c014-41da-ae60-859bb46f1cea';
---INSERT INTO t_alter_column values('c_ordersource','Marketplace','VARCHAR(8)',null,'NULL');
+INSERT INTO t_alter_column values('c_ordersource','Marketplace','VARCHAR(8)',null,'NULL');
+UPDATE AD_Column SET FieldLength=8, AD_Reference_Value_ID=toRecordId('AD_Reference','7d7ff01f-2c0b-4029-a2d4-d1bb090e19f7'),Updated=TO_TIMESTAMP('2024-12-27 21:22:35','YYYY-MM-DD HH24:MI:SS'),UpdatedBy=100 WHERE AD_Column_UU='8586cd02-c014-41da-ae60-859bb46f1cea';
+UPDATE AD_Ref_List SET Value='1',Updated=TO_TIMESTAMP('2024-12-27 22:20:51','YYYY-MM-DD HH24:MI:SS'),UpdatedBy=100 WHERE AD_Ref_List_UU='360ddc69-4adc-4688-8ec3-df6c0c8e1e95';
+UPDATE AD_Ref_List SET Value='2',Updated=TO_TIMESTAMP('2024-12-27 22:20:55','YYYY-MM-DD HH24:MI:SS'),UpdatedBy=100 WHERE AD_Ref_List_UU='cd1ee154-7a3a-4c64-bf38-f407315ff930';
+UPDATE AD_Ref_List SET Value='3',Updated=TO_TIMESTAMP('2024-12-27 22:20:57','YYYY-MM-DD HH24:MI:SS'),UpdatedBy=100 WHERE AD_Ref_List_UU='313a56a7-b78a-40db-9e33-3b1f2adea706';
+UPDATE AD_Ref_List SET Value='4',Updated=TO_TIMESTAMP('2024-12-27 22:20:59','YYYY-MM-DD HH24:MI:SS'),UpdatedBy=100 WHERE AD_Ref_List_UU='1e3e473a-bf68-44b7-b0f2-246e7d28f7a1';
+UPDATE AD_Ref_List SET Value='5',Updated=TO_TIMESTAMP('2024-12-27 22:21:01','YYYY-MM-DD HH24:MI:SS'),UpdatedBy=100 WHERE AD_Ref_List_UU='b686d2bb-80ef-45b0-b495-1f1cd3d67314';
