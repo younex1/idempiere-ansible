@@ -107,6 +107,8 @@ INSERT INTO AD_Field (AD_Field_ID,Name,AD_Tab_ID,AD_Column_ID,IsDisplayed,Displa
 INSERT INTO AD_Column (AD_Column_ID,Version,Name,AD_Table_ID,ColumnName,FieldLength,IsKey,IsParent,IsMandatory,IsTranslated,IsIdentifier,SeqNo,IsEncrypted,AD_Reference_ID,AD_Client_ID,AD_Org_ID,IsActive,Created,CreatedBy,Updated,UpdatedBy,AD_Element_ID,IsUpdateable,IsSelectionColumn,EntityType,IsSyncDatabase,IsAlwaysUpdateable,IsAutocomplete,IsAllowLogging,AD_Column_UU,IsAllowCopy,SeqNoSelection,IsToolbarButton,IsSecure,IsHtml,IsPartitionKey) VALUES (nextidfunc(3,'N'),0,'Strapi_Attachment_ID',254,'Strapi_Attachment_ID',10,'N','N','N','N','N',0,'N',11,0,0,'Y',TO_TIMESTAMP('2024-06-23 10:10:48','YYYY-MM-DD HH24:MI:SS'),100,TO_TIMESTAMP('2024-06-23 10:10:48','YYYY-MM-DD HH24:MI:SS'),100,toRecordId('AD_Element','de62fecd-af3a-4708-98a2-55e82681d5fa'),'Y','N','U','N','N','N','Y','27ba6c29-1648-43a8-8e0b-93b2e1e1709f','Y',0,'N','N','N','N');
 ALTER TABLE AD_Attachment ADD COLUMN Strapi_Attachment_ID NUMERIC(10) DEFAULT NULL;
 ALTER TABLE M_Product ADD COLUMN Strapi_Product_ID NUMERIC(10) DEFAULT NULL;
+INSERT INTO t_alter_column values('m_product','Strapi_Product_ID','NUMERIC(10)',null,'NULL');
+
 
 
 
