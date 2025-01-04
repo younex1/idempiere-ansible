@@ -38,7 +38,14 @@ INSERT INTO AD_Column (AD_Column_ID,Version,Name,AD_Table_ID,ColumnName,FieldLen
 ALTER TABLE M_InOut ADD COLUMN Sendcloud_Parcel_ID NUMERIC(10) DEFAULT NULL;
 INSERT INTO AD_Field (AD_Field_ID,Name,AD_Tab_ID,AD_Column_ID,IsDisplayed,DisplayLength,SeqNo,SortNo,IsSameLine,IsHeading,IsFieldOnly,IsEncrypted,AD_Client_ID,AD_Org_ID,IsActive,Created,CreatedBy,Updated,UpdatedBy,IsReadOnly,IsCentrallyMaintained,EntityType,AD_Field_UU,IsDisplayedGrid,SeqNoGrid,XPosition,ColumnSpan,NumLines,IsQuickEntry,IsDefaultFocus,IsAdvancedField,IsQuickForm) VALUES (nextidfunc(4,'N'),'Sendcloud_Parcel_ID',257,toRecordId('AD_Column','93b73acb-933e-4fbb-9046-177f079aecc2'),'Y',0,580,0,'N','N','N','N',0,0,'Y',TO_TIMESTAMP('2024-08-20 09:44:07','YYYY-MM-DD HH24:MI:SS'),100,TO_TIMESTAMP('2024-08-20 09:44:07','YYYY-MM-DD HH24:MI:SS'),100,'N','Y','U','c616e62c-5aa6-4661-9998-a049c618aba8','Y',570,1,1,1,'N','N','N','N');
 
-
+CREATE MATERIALIZED VIEW xx_open_purchase_orders AS
+ SELECT c_order_id,
+    ad_org_id
+   FROM c_order o
+  WHERE issotrx = 'N'::bpchar AND docstatus = 'CO'::bpchar AND (EXISTS ( SELECT 1
+           FROM c_orderline oi
+          WHERE oi.c_order_id = o.c_order_id AND oi.qtyordered <> oi.qtydelivered));
+     
 
 CREATE MATERIALIZED VIEW xy_mat_ad_preference AS
 SELECT pref.ad_preference_id,
