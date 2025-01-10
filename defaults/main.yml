@@ -7,7 +7,7 @@ java_home: /opt/jdk17
 #java_version: zulu@1.11.0-10
 java_version: openjdk@1.17.0
 # PostgresSQL
-postgres_version: 16
+postgres_version: 17
 postgres_install: true
 # Application
 app_port: 8080
