@@ -427,46 +427,14 @@ ALTER TABLE C_OrderSource ADD COLUMN M_PriceList_Version_ID NUMERIC(10) DEFAULT 
 ALTER TABLE C_OrderSource ADD CONSTRAINT MPriceListVersion_COrderSource FOREIGN KEY (M_PriceList_Version_ID) REFERENCES m_pricelist_version(m_pricelist_version_id) DEFERRABLE INITIALLY DEFERRED;
 
 --ADD labelprinter to M_Product
--- Feb 14, 2025, 9:46:35 PM UTC
-INSERT INTO AD_Reference (AD_Reference_ID,Name,ValidationType,AD_Client_ID,AD_Org_ID,IsActive,Created,CreatedBy,Updated,UpdatedBy,EntityType,IsOrderByValue,AD_Reference_UU,ShowInactive) VALUES (nextidfunc(14,'N'),'Labelprinter','L',0,0,'Y',TO_TIMESTAMP('2025-02-14 21:46:35','YYYY-MM-DD HH24:MI:SS'),100,TO_TIMESTAMP('2025-02-14 21:46:35','YYYY-MM-DD HH24:MI:SS'),100,'U','N','77af7c9c-8ecb-4304-8559-f596f3a0d74b','N')
-;
-
--- Feb 14, 2025, 9:47:16 PM UTC
-INSERT INTO AD_Ref_List (AD_Ref_List_ID,Name,Description,AD_Reference_ID,Value,AD_Client_ID,AD_Org_ID,IsActive,Created,CreatedBy,Updated,UpdatedBy,EntityType,AD_Ref_List_UU) VALUES (nextidfunc(11,'N'),'labelprinter-1','Size x1-x2',toRecordId('AD_Reference','77af7c9c-8ecb-4304-8559-f596f3a0d74b'),'a',0,0,'Y',TO_TIMESTAMP('2025-02-14 21:47:16','YYYY-MM-DD HH24:MI:SS'),100,TO_TIMESTAMP('2025-02-14 21:47:16','YYYY-MM-DD HH24:MI:SS'),100,'U','cc6ae32b-2863-40e8-9006-ee74c2f8456d')
-;
-
--- Feb 14, 2025, 9:47:36 PM UTC
-INSERT INTO AD_Ref_List (AD_Ref_List_ID,Name,Description,AD_Reference_ID,Value,AD_Client_ID,AD_Org_ID,IsActive,Created,CreatedBy,Updated,UpdatedBy,EntityType,AD_Ref_List_UU) VALUES (nextidfunc(11,'N'),'labelprinter-2','Size x2 x x2',toRecordId('AD_Reference','77af7c9c-8ecb-4304-8559-f596f3a0d74b'),'b',0,0,'Y',TO_TIMESTAMP('2025-02-14 21:47:36','YYYY-MM-DD HH24:MI:SS'),100,TO_TIMESTAMP('2025-02-14 21:47:36','YYYY-MM-DD HH24:MI:SS'),100,'U','8bf33427-1884-47b3-b99b-304dba14b634')
-;
-
--- Feb 14, 2025, 9:48:00 PM UTC
-INSERT INTO AD_Ref_List (AD_Ref_List_ID,Name,Description,AD_Reference_ID,Value,AD_Client_ID,AD_Org_ID,IsActive,Created,CreatedBy,Updated,UpdatedBy,EntityType,AD_Ref_List_UU) VALUES (nextidfunc(11,'N'),'labelprinter-3','Size x3 x x3',toRecordId('AD_Reference','77af7c9c-8ecb-4304-8559-f596f3a0d74b'),'c',0,0,'Y',TO_TIMESTAMP('2025-02-14 21:48:00','YYYY-MM-DD HH24:MI:SS'),100,TO_TIMESTAMP('2025-02-14 21:48:00','YYYY-MM-DD HH24:MI:SS'),100,'U','70a1fcab-a30c-457d-9545-31d2f9975bfa')
-;
-
--- Feb 14, 2025, 9:48:33 PM UTC
-INSERT INTO AD_Ref_List (AD_Ref_List_ID,Name,Description,AD_Reference_ID,Value,AD_Client_ID,AD_Org_ID,IsActive,Created,CreatedBy,Updated,UpdatedBy,EntityType,AD_Ref_List_UU) VALUES (nextidfunc(11,'N'),'labelprinter-4','Size x4 x x4',toRecordId('AD_Reference','77af7c9c-8ecb-4304-8559-f596f3a0d74b'),'d',0,0,'Y',TO_TIMESTAMP('2025-02-14 21:48:33','YYYY-MM-DD HH24:MI:SS'),100,TO_TIMESTAMP('2025-02-14 21:48:33','YYYY-MM-DD HH24:MI:SS'),100,'U','c16dfc1b-b352-440e-8c78-18f0904b23ca')
-;
-
--- Feb 14, 2025, 9:48:55 PM UTC
-INSERT INTO AD_Ref_List (AD_Ref_List_ID,Name,Description,AD_Reference_ID,Value,AD_Client_ID,AD_Org_ID,IsActive,Created,CreatedBy,Updated,UpdatedBy,EntityType,AD_Ref_List_UU) VALUES (nextidfunc(11,'N'),'labelprinter-5','Size x5 x x5',toRecordId('AD_Reference','77af7c9c-8ecb-4304-8559-f596f3a0d74b'),'e',0,0,'Y',TO_TIMESTAMP('2025-02-14 21:48:55','YYYY-MM-DD HH24:MI:SS'),100,TO_TIMESTAMP('2025-02-14 21:48:55','YYYY-MM-DD HH24:MI:SS'),100,'U','0bd6e4f7-a935-463d-b9f1-14ef5a6b1135')
-;
-
--- Feb 14, 2025, 9:49:07 PM UTC
-INSERT INTO AD_Ref_List (AD_Ref_List_ID,Name,Description,AD_Reference_ID,Value,AD_Client_ID,AD_Org_ID,IsActive,Created,CreatedBy,Updated,UpdatedBy,EntityType,AD_Ref_List_UU) VALUES (nextidfunc(11,'N'),'labelprinter-6','Size x6 x x6',toRecordId('AD_Reference','77af7c9c-8ecb-4304-8559-f596f3a0d74b'),'f',0,0,'Y',TO_TIMESTAMP('2025-02-14 21:49:07','YYYY-MM-DD HH24:MI:SS'),100,TO_TIMESTAMP('2025-02-14 21:49:07','YYYY-MM-DD HH24:MI:SS'),100,'U','dfd2e52c-10f7-4dd2-950b-66fe29839edd')
-;
-
--- Feb 14, 2025, 9:51:19 PM UTC
-INSERT INTO AD_Element (AD_Element_ID,AD_Client_ID,AD_Org_ID,IsActive,Created,CreatedBy,Updated,UpdatedBy,ColumnName,Name,PrintName,EntityType,AD_Element_UU) VALUES (nextidfunc(188,'N'),0,0,'Y',TO_TIMESTAMP('2025-02-14 21:51:19','YYYY-MM-DD HH24:MI:SS'),100,TO_TIMESTAMP('2025-02-14 21:51:19','YYYY-MM-DD HH24:MI:SS'),100,'labelprinter','labelprinter','labelprinter','U','46c85ace-b137-41bd-bde8-d5379ea08d5a')
-;
-
--- Feb 14, 2025, 9:51:42 PM UTC
-INSERT INTO AD_Column (AD_Column_ID,Version,Name,AD_Table_ID,ColumnName,DefaultValue,FieldLength,IsKey,IsParent,IsMandatory,IsTranslated,IsIdentifier,SeqNo,IsEncrypted,AD_Reference_ID,AD_Client_ID,AD_Org_ID,IsActive,Created,CreatedBy,Updated,UpdatedBy,AD_Element_ID,IsUpdateable,IsSelectionColumn,EntityType,IsSyncDatabase,IsAlwaysUpdateable,IsAutocomplete,IsAllowLogging,AD_Column_UU,IsAllowCopy,SeqNoSelection,IsToolbarButton,IsSecure,IsHtml,IsPartitionKey) VALUES (nextidfunc(3,'N'),0,'labelprinter',208,'labelprinter','a',1,'N','N','N','N','N',0,'N',17,0,0,'Y',TO_TIMESTAMP('2025-02-14 21:51:42','YYYY-MM-DD HH24:MI:SS'),100,TO_TIMESTAMP('2025-02-14 21:51:42','YYYY-MM-DD HH24:MI:SS'),100,toRecordId('AD_Element','46c85ace-b137-41bd-bde8-d5379ea08d5a'),'Y','N','U','N','Y','N','Y','0d0e12fe-19f2-4d41-a8f9-62daf428dc03','Y',0,'N','N','N','N')
-;
-
--- Feb 14, 2025, 9:51:46 PM UTC
-ALTER TABLE M_Product ADD COLUMN labelprinter CHAR(1) DEFAULT 'a'
-;
-
--- Feb 14, 2025, 9:52:30 PM UTC
-INSERT INTO AD_Field (AD_Field_ID,Name,AD_Tab_ID,AD_Column_ID,IsDisplayed,DisplayLength,SeqNo,SortNo,IsSameLine,IsHeading,IsFieldOnly,IsEncrypted,AD_Client_ID,AD_Org_ID,IsActive,Created,CreatedBy,Updated,UpdatedBy,IsReadOnly,IsCentrallyMaintained,EntityType,AD_Field_UU,IsDisplayedGrid,SeqNoGrid,XPosition,ColumnSpan,NumLines,IsQuickEntry,IsDefaultFocus,IsAdvancedField,IsQuickForm,IsHtml) VALUES (nextidfunc(4,'N'),'labelprinter',180,toRecordId('AD_Column','0d0e12fe-19f2-4d41-a8f9-62daf428dc03'),'Y',0,700,0,'N','N','N','N',0,0,'Y',TO_TIMESTAMP('2025-02-14 21:52:30','YYYY-MM-DD HH24:MI:SS'),100,TO_TIMESTAMP('2025-02-14 21:52:30','YYYY-MM-DD HH24:MI:SS'),100,'N','Y','U','c2259334-bada-4155-a78e-a965d495304e','Y',690,1,1,1,'N','N','N','N','N')
-;
+INSERT INTO AD_Reference (AD_Reference_ID,Name,ValidationType,AD_Client_ID,AD_Org_ID,IsActive,Created,CreatedBy,Updated,UpdatedBy,EntityType,IsOrderByValue,AD_Reference_UU,ShowInactive) VALUES (nextidfunc(14,'N'),'Labelprinter','L',0,0,'Y',TO_TIMESTAMP('2025-02-14 21:46:35','YYYY-MM-DD HH24:MI:SS'),100,TO_TIMESTAMP('2025-02-14 21:46:35','YYYY-MM-DD HH24:MI:SS'),100,'U','N','77af7c9c-8ecb-4304-8559-f596f3a0d74b','N');
+INSERT INTO AD_Ref_List (AD_Ref_List_ID,Name,Description,AD_Reference_ID,Value,AD_Client_ID,AD_Org_ID,IsActive,Created,CreatedBy,Updated,UpdatedBy,EntityType,AD_Ref_List_UU) VALUES (nextidfunc(11,'N'),'labelprinter-1','Size x1-x2',toRecordId('AD_Reference','77af7c9c-8ecb-4304-8559-f596f3a0d74b'),'a',0,0,'Y',TO_TIMESTAMP('2025-02-14 21:47:16','YYYY-MM-DD HH24:MI:SS'),100,TO_TIMESTAMP('2025-02-14 21:47:16','YYYY-MM-DD HH24:MI:SS'),100,'U','cc6ae32b-2863-40e8-9006-ee74c2f8456d');
+INSERT INTO AD_Ref_List (AD_Ref_List_ID,Name,Description,AD_Reference_ID,Value,AD_Client_ID,AD_Org_ID,IsActive,Created,CreatedBy,Updated,UpdatedBy,EntityType,AD_Ref_List_UU) VALUES (nextidfunc(11,'N'),'labelprinter-2','Size x2 x x2',toRecordId('AD_Reference','77af7c9c-8ecb-4304-8559-f596f3a0d74b'),'b',0,0,'Y',TO_TIMESTAMP('2025-02-14 21:47:36','YYYY-MM-DD HH24:MI:SS'),100,TO_TIMESTAMP('2025-02-14 21:47:36','YYYY-MM-DD HH24:MI:SS'),100,'U','8bf33427-1884-47b3-b99b-304dba14b634');
+INSERT INTO AD_Ref_List (AD_Ref_List_ID,Name,Description,AD_Reference_ID,Value,AD_Client_ID,AD_Org_ID,IsActive,Created,CreatedBy,Updated,UpdatedBy,EntityType,AD_Ref_List_UU) VALUES (nextidfunc(11,'N'),'labelprinter-3','Size x3 x x3',toRecordId('AD_Reference','77af7c9c-8ecb-4304-8559-f596f3a0d74b'),'c',0,0,'Y',TO_TIMESTAMP('2025-02-14 21:48:00','YYYY-MM-DD HH24:MI:SS'),100,TO_TIMESTAMP('2025-02-14 21:48:00','YYYY-MM-DD HH24:MI:SS'),100,'U','70a1fcab-a30c-457d-9545-31d2f9975bfa');
+INSERT INTO AD_Ref_List (AD_Ref_List_ID,Name,Description,AD_Reference_ID,Value,AD_Client_ID,AD_Org_ID,IsActive,Created,CreatedBy,Updated,UpdatedBy,EntityType,AD_Ref_List_UU) VALUES (nextidfunc(11,'N'),'labelprinter-4','Size x4 x x4',toRecordId('AD_Reference','77af7c9c-8ecb-4304-8559-f596f3a0d74b'),'d',0,0,'Y',TO_TIMESTAMP('2025-02-14 21:48:33','YYYY-MM-DD HH24:MI:SS'),100,TO_TIMESTAMP('2025-02-14 21:48:33','YYYY-MM-DD HH24:MI:SS'),100,'U','c16dfc1b-b352-440e-8c78-18f0904b23ca');
+INSERT INTO AD_Ref_List (AD_Ref_List_ID,Name,Description,AD_Reference_ID,Value,AD_Client_ID,AD_Org_ID,IsActive,Created,CreatedBy,Updated,UpdatedBy,EntityType,AD_Ref_List_UU) VALUES (nextidfunc(11,'N'),'labelprinter-5','Size x5 x x5',toRecordId('AD_Reference','77af7c9c-8ecb-4304-8559-f596f3a0d74b'),'e',0,0,'Y',TO_TIMESTAMP('2025-02-14 21:48:55','YYYY-MM-DD HH24:MI:SS'),100,TO_TIMESTAMP('2025-02-14 21:48:55','YYYY-MM-DD HH24:MI:SS'),100,'U','0bd6e4f7-a935-463d-b9f1-14ef5a6b1135');
+INSERT INTO AD_Ref_List (AD_Ref_List_ID,Name,Description,AD_Reference_ID,Value,AD_Client_ID,AD_Org_ID,IsActive,Created,CreatedBy,Updated,UpdatedBy,EntityType,AD_Ref_List_UU) VALUES (nextidfunc(11,'N'),'labelprinter-6','Size x6 x x6',toRecordId('AD_Reference','77af7c9c-8ecb-4304-8559-f596f3a0d74b'),'f',0,0,'Y',TO_TIMESTAMP('2025-02-14 21:49:07','YYYY-MM-DD HH24:MI:SS'),100,TO_TIMESTAMP('2025-02-14 21:49:07','YYYY-MM-DD HH24:MI:SS'),100,'U','dfd2e52c-10f7-4dd2-950b-66fe29839edd');
+INSERT INTO AD_Element (AD_Element_ID,AD_Client_ID,AD_Org_ID,IsActive,Created,CreatedBy,Updated,UpdatedBy,ColumnName,Name,PrintName,EntityType,AD_Element_UU) VALUES (nextidfunc(188,'N'),0,0,'Y',TO_TIMESTAMP('2025-02-14 21:51:19','YYYY-MM-DD HH24:MI:SS'),100,TO_TIMESTAMP('2025-02-14 21:51:19','YYYY-MM-DD HH24:MI:SS'),100,'labelprinter','labelprinter','labelprinter','U','46c85ace-b137-41bd-bde8-d5379ea08d5a');
+INSERT INTO AD_Column (AD_Column_ID,Version,Name,AD_Table_ID,ColumnName,DefaultValue,FieldLength,IsKey,IsParent,IsMandatory,IsTranslated,IsIdentifier,SeqNo,IsEncrypted,AD_Reference_ID,AD_Client_ID,AD_Org_ID,IsActive,Created,CreatedBy,Updated,UpdatedBy,AD_Element_ID,IsUpdateable,IsSelectionColumn,EntityType,IsSyncDatabase,IsAlwaysUpdateable,IsAutocomplete,IsAllowLogging,AD_Column_UU,IsAllowCopy,SeqNoSelection,IsToolbarButton,IsSecure,IsHtml,IsPartitionKey) VALUES (nextidfunc(3,'N'),0,'labelprinter',208,'labelprinter','a',1,'N','N','N','N','N',0,'N',17,0,0,'Y',TO_TIMESTAMP('2025-02-14 21:51:42','YYYY-MM-DD HH24:MI:SS'),100,TO_TIMESTAMP('2025-02-14 21:51:42','YYYY-MM-DD HH24:MI:SS'),100,toRecordId('AD_Element','46c85ace-b137-41bd-bde8-d5379ea08d5a'),'Y','N','U','N','Y','N','Y','0d0e12fe-19f2-4d41-a8f9-62daf428dc03','Y',0,'N','N','N','N');
+ALTER TABLE M_Product ADD COLUMN labelprinter CHAR(1) DEFAULT 'a';
+INSERT INTO AD_Field (AD_Field_ID,Name,AD_Tab_ID,AD_Column_ID,IsDisplayed,DisplayLength,SeqNo,SortNo,IsSameLine,IsHeading,IsFieldOnly,IsEncrypted,AD_Client_ID,AD_Org_ID,IsActive,Created,CreatedBy,Updated,UpdatedBy,IsReadOnly,IsCentrallyMaintained,EntityType,AD_Field_UU,IsDisplayedGrid,SeqNoGrid,XPosition,ColumnSpan,NumLines,IsQuickEntry,IsDefaultFocus,IsAdvancedField,IsQuickForm,IsHtml) VALUES (nextidfunc(4,'N'),'labelprinter',180,toRecordId('AD_Column','0d0e12fe-19f2-4d41-a8f9-62daf428dc03'),'Y',0,700,0,'N','N','N','N',0,0,'Y',TO_TIMESTAMP('2025-02-14 21:52:30','YYYY-MM-DD HH24:MI:SS'),100,TO_TIMESTAMP('2025-02-14 21:52:30','YYYY-MM-DD HH24:MI:SS'),100,'N','Y','U','c2259334-bada-4155-a78e-a965d495304e','Y',690,1,1,1,'N','N','N','N','N');
