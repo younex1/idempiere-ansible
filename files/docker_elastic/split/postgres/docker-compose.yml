@@ -1,0 +1,7 @@
+version: '3.7'
+services:
+  sync:
+    build:
+      context: ./sync
+    container_name: idempiere-sync
+    network_mode: "host"

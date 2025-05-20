@@ -1,0 +1,54 @@
+{
+  "mappings": {
+    "properties": {
+      "c_bpartner_id": {
+        "type": "integer"
+      },
+      "value": {
+        "type": "keyword"
+      },
+      "name": {
+        "type": "text"
+      },
+      "name2": {
+        "type": "text"
+      },
+      "description": {
+        "type": "text"
+      },
+      "isonetime": {
+        "type": "keyword"
+      },
+      "isprospect": {
+        "type": "keyword"
+      },
+      "isvendor": {
+        "type": "keyword"
+      },
+      "iscustomer": {
+        "type": "keyword"
+      },
+      "isemployee": {
+        "type": "keyword"
+      },
+      "address1": {
+        "type": "text"
+      },
+      "address2": {
+        "type": "text"
+      },
+      "city": {
+        "type": "text"
+      },
+      "postal": {
+        "type": "keyword"
+      },
+      "created": {
+        "type": "date"
+      },
+      "updated": {
+        "type": "date"
+      }
+    }
+  }
+}

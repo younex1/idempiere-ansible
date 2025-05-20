@@ -1,0 +1,33 @@
+{
+  "mappings": {
+    "properties": {
+      "m_inout_id": {
+        "type": "integer"
+      },
+      "issotrx": {
+        "type": "keyword"
+      },
+      "documentno": {
+        "type": "keyword"
+      },
+      "docstatus": {
+        "type": "keyword"
+      },
+      "description": {
+        "type": "text"
+      },
+      "movementtype": {
+        "type": "keyword"
+      },
+      "trackingno": {
+        "type": "keyword"
+      },
+      "created": {
+        "type": "date"
+      },
+      "updated": {
+        "type": "date"
+      }
+    }
+  }
+}

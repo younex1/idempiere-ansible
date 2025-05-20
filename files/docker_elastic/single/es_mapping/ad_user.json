@@ -1,0 +1,33 @@
+{
+  "mappings": {
+    "properties": {
+      "ad_user_id": {
+        "type": "integer"
+      },
+      "name": {
+        "type": "text"
+      },
+      "email": {
+        "type": "keyword"
+      },
+      "phone": {
+        "type": "keyword"
+      },
+      "issaleslead": {
+        "type": "keyword"
+      },
+      "isvendorlead": {
+        "type": "keyword"
+      },
+      "issystemuser": {
+        "type": "keyword"
+      },
+      "created": {
+        "type": "date"
+      },
+      "updated": {
+        "type": "date"
+      }
+    }
+  }
+}

@@ -1,0 +1,42 @@
+{
+  "mappings": {
+    "properties": {
+      "m_product_id": {
+        "type": "integer"
+      },
+      "value": {
+        "type": "keyword"
+      },
+      "name": {
+        "type": "text"
+      },
+      "description": {
+        "type": "text"
+      },
+      "documentnote": {
+        "type": "text"
+      },
+      "help": {
+        "type": "text"
+      },
+      "sku": {
+        "type": "keyword"
+      },
+      "upc": {
+        "type": "keyword"
+      },
+      "mpn": {
+        "type": "keyword"
+      },
+      "asin": {
+        "type": "keyword"
+      },
+      "created": {
+        "type": "date"
+      },
+      "updated": {
+        "type": "date"
+      }
+    }
+  }
+}
