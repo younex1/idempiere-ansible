@@ -1,0 +1,36 @@
+{
+  "mappings": {
+    "properties": {
+      "c_order_id": {
+        "type": "integer"
+      },
+      "issotrx": {
+        "type": "keyword"
+      },
+      "documentno": {
+        "type": "keyword"
+      },
+      "docstatus": {
+        "type": "keyword"
+      },
+      "shopware6_order_id": {
+        "type": "keyword"
+      },
+      "shopify_order_id": {
+        "type": "keyword"
+      },
+      "xentral_order_id": {
+        "type": "keyword"
+      },
+      "externalorderid": {
+        "type": "keyword"
+      },
+      "created": {
+        "type": "date"
+      },
+      "updated": {
+        "type": "date"
+      }
+    }
+  }
+}

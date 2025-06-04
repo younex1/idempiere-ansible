@@ -1,0 +1,36 @@
+{
+  "mappings": {
+    "properties": {
+      "c_invoice_id": {
+        "type": "integer"
+      },
+      "documentno": {
+        "type": "keyword"
+      },
+      "docstatus": {
+        "type": "keyword"
+      },
+      "docaction": {
+        "type": "keyword"
+      },
+      "processing": {
+        "type": "keyword"
+      },
+      "processed": {
+        "type": "keyword"
+      },
+      "posted": {
+        "type": "keyword"
+      },
+      "description": {
+        "type": "text"
+      },
+      "created": {
+        "type": "date"
+      },
+      "updated": {
+        "type": "date"
+      }
+    }
+  }
+}

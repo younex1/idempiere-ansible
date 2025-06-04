@@ -1,0 +1,33 @@
+{
+  "mappings": {
+    "properties": {
+      "r_request_id": {
+        "type": "integer"
+      },
+      "documentno": {
+        "type": "keyword"
+      },
+      "summary": {
+        "type": "text"
+      },
+      "priority": {
+        "type": "keyword"
+      },
+      "lastresult": {
+        "type": "text"
+      },
+      "processed": {
+        "type": "keyword"
+      },
+      "isinvoiced": {
+        "type": "keyword"
+      },
+      "datelastaction": {
+        "type": "date"
+      },
+      "datelastalert": {
+        "type": "date"
+      }
+    }
+  }
+}

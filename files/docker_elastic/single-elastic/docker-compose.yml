@@ -1,0 +1,40 @@
+version: '3.7'
+services:
+  elasticsearch:
+    image: docker.elastic.co/elasticsearch/elasticsearch:8.13.0
+    container_name: elasticsearch
+    environment:
+      - discovery.type=single-node
+      - xpack.security.enabled=false
+      - xpack.security.transport.ssl.enabled=false
+      - xpack.security.http.ssl.enabled=false
+      - bootstrap.memory_lock=true
+      - "ES_JAVA_OPTS=-Xms1g -Xmx1g"
+    ulimits:
+      memlock:
+        soft: -1
+        hard: -1
+    ports:
+      - "9200:9200"
+    volumes:
+      - esdata:/usr/share/elasticsearch/data
+    restart: unless-stopped
+  sync:
+    build:
+      context: ./sync
+    container_name: idempiere-sync
+    depends_on:
+      - elasticsearch
+    network_mode: "host"
+    environment:
+      # ← Move ES_URL here so sync.py picks it up
+      - ES_URL=http://127.0.0.1:9200
+      - PGHOST=127.0.0.1
+      - PGPORT=5432
+      - PGDATABASE=idempiere
+      - PGUSER=adempiere
+      - PGPASSWORD=MyWeak_Pa55w0rd
+    restart: unless-stopped
+
+volumes:
+  esdata:

@@ -1,0 +1,72 @@
+{
+  "mappings": {
+    "properties": {
+      "m_product_id": {
+        "type": "integer"
+      },
+      "product_value": {
+        "type": "keyword"
+      },
+      "product_name": {
+        "type": "text"
+      },
+      "description": {
+        "type": "text"
+      },
+      "documentnote": {
+        "type": "text"
+      },
+      "help": {
+        "type": "text"
+      },
+      "sku": {
+        "type": "keyword"
+      },
+      "upc": {
+        "type": "keyword"
+      },
+      "mpn": {
+        "type": "keyword"
+      },
+      "asin": {
+        "type": "keyword"
+      },
+      "pricelist_version_id": {
+        "type": "integer"
+      },
+      "pricelist_version_name": {
+        "type": "text"
+      },
+      "product_price": {
+        "type": "double"
+      },
+      "warehouse_id": {
+        "type": "integer"
+      },
+      "warehouse_name": {
+        "type": "text"
+      },
+      "ad_client_id": {
+        "type": "integer"
+      },
+      "ad_org_id": {
+        "type": "integer"
+      },
+      "created": {
+        "type": "date"
+      },
+      "createdby": {
+        "type": "integer"
+      },
+      "updated": {
+        "type": "date"
+      },
+      "updatedby": {
+        "type": "integer"
+      },
+      "isactive": {
+        "type": "keyword"
+      }
+    }
+  }
+}
